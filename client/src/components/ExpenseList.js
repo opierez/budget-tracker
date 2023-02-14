@@ -28,7 +28,8 @@ function ExpenseList() {
         <ul className='list-group mt-3'>
             {expenses.map((expense) => (
                 <ExpenseItem 
-                    id={expense.id}
+                    key={expense.id}
+                    // id={expense.id}
                     name={expense.name}
                     cost={expense.cost}
                     category={expense.category}/>

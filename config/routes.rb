@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :expenses
-  resources :categories
-  resources :users
-  get '/hello', to: 'application#hello_world'
+  resources :expenses 
+  resources :categories, only: [:index, :create]
+  resources :users, only: [:show, :create]
+  post '/signup', to: "users#create"
+  get '/me', to: "users#show"
+  post '/login', to: "sessions#create"
+  delete '/logout', to: "sessions#destroy"
 
   get '*path',
       to: 'fallback#index',
