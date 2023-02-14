@@ -39,7 +39,7 @@ const SignupForm = ({ updateUser }) => {
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          console.log(user)
+        //   console.log(user)
           history.push('/')
           updateUser(user);
         });
