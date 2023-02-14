@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import '../styles/SignupForm.css'
 import { useHistory } from 'react-router-dom';
 
-const SignupForm = ({ handleLoginUser }) => {
+const SignupForm = ({ updateUser }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -41,7 +41,7 @@ const SignupForm = ({ handleLoginUser }) => {
         res.json().then((user) => {
           console.log(user)
           history.push('/')
-          handleLoginUser(user);
+          updateUser(user);
         });
       } else {
         res.json().then(json => {

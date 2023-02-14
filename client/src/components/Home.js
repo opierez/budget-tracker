@@ -1,14 +1,12 @@
 import React, {useState} from "react";
 import ExpenseList from "./ExpenseList";
 
-function Home({ budget }) {
+function Home({ user }) {
     // const [budget, setBudget] = useState(0);
     const [remaining, setRemaining] = useState(0);
     const [spent, setSpent] = useState(0);
-
-  
     
-
+    
 
     return (
         <>
@@ -16,7 +14,7 @@ function Home({ budget }) {
             <div className='row mt-3'>
               <div className='col-sm'>
                 <div className='alert alert-secondary'>
-                    <span>Budget: ${budget}</span>
+                    <span>Budget: ${user.budget}</span>
                 </div>
               </div>
               <div className='col-sm'>

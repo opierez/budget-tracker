@@ -10,13 +10,13 @@ import Login from './components/Login';
 
 
 function App() {
-
+  const [budget, setBudget] = useState(0)
   const [user, setUser] = useState({})
-  const [budget, setBudget] = useState(0);
+  const [errors, setErrors] = useState(null)
 
   useEffect(() => {
     // auto-login
-    fetch('/me')
+    fetch('/authorized_user')
     .then(res => {
       if (res.ok) {
         res.json().then(user => {
@@ -24,33 +24,44 @@ function App() {
           setUser(user)
           setBudget(user.budget)
         })
-      } 
+      } else {
+        res.json().then(data => setErrors(data.error))
+      }
     })
   }, [])
 
   
-  const handleLoginUser = (user) => {
+  const updateUser = (user) => {
       console.log(user)
       setUser(user)
-      setBudget(user.budget)
+      if (user) 
+        setBudget(user.budget)
   }
 
-  if(!user) return <Login handleLoginUser={handleLoginUser}/>
+
+  if(!user || Object.keys(user).length === 0) return (
+   <>
+  <NavBar updateUser={updateUser}/>
+  <Login updateUser={updateUser}/>
+  </> 
+  )
+
+  if(errors) return <h1>{errors}</h1>
 
   return (
     <div className="container">
-      <NavBar user={user} handleLoginUser={handleLoginUser}/>
+      <NavBar user={user} updateUser={updateUser}/>
       
         <Switch>
 
           {/* /users/new => Signup Page */}
           <Route path='/users/new'>
-            <SignupForm handleLoginUser={handleLoginUser}/>
+            <SignupForm updateUser={updateUser}/>
           </Route>
 
           {/* /login => Login Page */}
           <Route path='/login'>
-            <Login handleLoginUser={handleLoginUser}/>
+            <Login updateUser={updateUser}/>
           </Route>
 
           {/* /users/:id => User Profile Page */}
@@ -60,7 +71,7 @@ function App() {
 
           {/* / => Home Page, Root Route */}
           <Route exact path='/'>
-            <Home budget={budget}/>
+            <Home user={user}/>
           </Route>
 
         </Switch>

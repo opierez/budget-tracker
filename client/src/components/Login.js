@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom';
 
 
-function Login({ handleLoginUser }) {
+function Login({ updateUser }) {
     const [formData, setFormData] = useState({
         username:'',
         password:''
@@ -30,7 +30,7 @@ function Login({ handleLoginUser }) {
             if(res.ok){
                 res.json().then(user => {
                     history.push('/')
-                    handleLoginUser(user)})
+                    updateUser(user)})
             }else {
                 res.json().then(json => {
                     console.log(json.errors)

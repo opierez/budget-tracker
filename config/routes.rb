@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :create]
   resources :users, only: [:show, :create]
   post '/signup', to: "users#create"
-  get '/me', to: "users#show"
+  get '/authorized_user', to: "users#show"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
