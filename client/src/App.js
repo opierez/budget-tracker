@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
 import NavBar from './components/NavBar';
 import SignupForm from './components/SignupForm';
 import Home from './components/Home';
@@ -13,6 +13,8 @@ function App() {
   const [budget, setBudget] = useState(0)
   const [user, setUser] = useState({})
   const [errors, setErrors] = useState(null)
+  const [categories, setCategories] = useState({})
+
 
   useEffect(() => {
     // auto-login
@@ -25,21 +27,27 @@ function App() {
           setBudget(user.budget)
         })
       } else {
-        res.json().then(data => setErrors(data.error))
+          res.json().then(data => setErrors(data.error))
       }
     })
   }, [])
 
+  // useEffect(() => {
+  //   fetch('/categories')
+  //     .then(res => res.json())
+  //     .then(data => console.log(data))
+  // }, [])
+
   
   const updateUser = (user) => {
-      console.log(user)
+      // console.log(user)
       setUser(user)
       if (user) 
         setBudget(user.budget)
   }
 
 
-  if(!user || Object.keys(user).length === 0) return (
+  if(!user) return (
    <>
   <NavBar updateUser={updateUser}/>
   <Login updateUser={updateUser}/>
@@ -66,12 +74,12 @@ function App() {
 
           {/* /users/:id => User Profile Page */}
           <Route path='/users/:id'>
-            <ProfilePage />
+            <ProfilePage user={user}/>
           </Route>
 
           {/* / => Home Page, Root Route */}
           <Route exact path='/'>
-            <Home user={user}/>
+            <Home user={user} budget={budget}/>
           </Route>
 
         </Switch>
