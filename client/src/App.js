@@ -12,22 +12,23 @@ import Login from './components/Login';
 function App() {
   const [budget, setBudget] = useState(0)
   const [user, setUser] = useState({})
-  const [errors, setErrors] = useState(null)
+  const [errors, setErrors] = useState([])
   const [categories, setCategories] = useState({})
 
-
+  // auto-login. sets the user and budget if the user is authorized
   useEffect(() => {
-    // auto-login
     fetch('/authorized_user')
     .then(res => {
       if (res.ok) {
         res.json().then(user => {
-          console.log(user)
+          // console.log(user)
           setUser(user)
           setBudget(user.budget)
         })
       } else {
-          res.json().then(data => setErrors(data.error))
+          res.json().then(data => {
+            console.log(data)
+            setErrors(data.errors)})
       }
     })
   }, [])
@@ -38,7 +39,7 @@ function App() {
   //     .then(data => console.log(data))
   // }, [])
 
-  
+  // updates user state after login, signup, or logout. if user exists, update budget state   
   const updateUser = (user) => {
       // console.log(user)
       setUser(user)
@@ -47,19 +48,11 @@ function App() {
   }
 
 
-  if(!user) return (
-   <>
-  <NavBar updateUser={updateUser}/>
-  <Login updateUser={updateUser}/>
-  </> 
-  )
-
-  if(errors) return <h1>{errors}</h1>
-
   return (
     <div className="container">
+      {errors ? errors.map(error => <div key={error}>{error}</div>) : null}
       <NavBar user={user} updateUser={updateUser}/>
-      
+
         <Switch>
 
           {/* /users/new => Signup Page */}

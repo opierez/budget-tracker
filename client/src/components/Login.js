@@ -3,16 +3,25 @@ import { useHistory } from 'react-router-dom';
 
 
 function Login({ updateUser }) {
+
     const [formData, setFormData] = useState({
         username:'',
         password:''
     })
+
+    // errors from fetch request 
     const [errors, setErrors] = useState([])
-    
 
     const history = useHistory()
 
+    // deconstructs username and password to be used in from values
     const {username, password} = formData
+
+    // update form data with user's input 
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData({ ...formData, [name]: value })
+    }
 
     function onSubmit(e){
         e.preventDefault()
@@ -21,6 +30,7 @@ function Login({ updateUser }) {
             password
         }
        
+        // if user exists and is authenticated, create user session. if user doesn't exist or isn't authenticated, render errors. 
         fetch(`/login`,{
           method:'POST',
           headers:{'Content-Type': 'application/json'},
@@ -29,8 +39,8 @@ function Login({ updateUser }) {
         .then(res => {
             if(res.ok){
                 res.json().then(user => {
-                    history.push('/')
-                    updateUser(user)})
+                    history.push('/') // redirect user to home after successful login
+                    updateUser(user)}) // update user state in parent component
             }else {
                 res.json().then(json => {
                     console.log(json.errors)
@@ -39,13 +49,6 @@ function Login({ updateUser }) {
             }
         })
        
-    }
-
-
-
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
     }
 
 
@@ -60,6 +63,7 @@ function Login({ updateUser }) {
         
             <input type='submit' value='Log in' />
         </form>
+        {/* renders login errors to the user */}
         {errors ? errors.map(error => <div key={error}>{error}</div>) : null}
         </div>
     )

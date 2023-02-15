@@ -4,8 +4,11 @@ import { BrowserRouter as Router, Link} from 'react-router-dom';
 
 
 function NavBar({ user, updateUser}) {
+
+    // checks if the navigation menu bar is open or closed
     const [isOpen, setIsOpen] = useState(false);
 
+    // logs user out (deletes session) and updates user state to null if successful
     function handleLogoutClick() {
         fetch("/logout", { 
             method: "DELETE" 
@@ -16,26 +19,10 @@ function NavBar({ user, updateUser}) {
         });
     }
 
+    // if user clicks on one of the navigation menu options, close the navigation menu 
     function handleLinkClick() {
         setIsOpen(false);
-      }
-
-    // if (!user || Object.keys(user).length === 0) return (
-    //     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    //   <Link className="navbar-brand" to="/">Home</Link>
-    //   <button className="navbar-toggler" type="button" onClick={() => setIsOpen(!isOpen)} aria-controls="navbarNav" aria-expanded={isOpen} aria-label="Toggle navigation">
-    //     <span className="navbar-toggler-icon"></span>
-    //   </button>
-    //   <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
-    //     <ul className="navbar-nav">
-    //       <li className="nav-item">
-    //         <Link className="nav-link" to="/login">Log in</Link>
-    //         <Link className="nav-link" to='/users/new'>Sign Up</Link>
-    //       </li>
-    //     </ul>
-    //   </div>
-    // </nav>
-    // )
+    }
 
   
     return (
@@ -47,6 +34,7 @@ function NavBar({ user, updateUser}) {
         </button>
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav">
+            {/* if user truthy and has at least one property (ie a user is logged in) render Profile and Sign out options in navigation */}
             {user && Object.keys(user).length !== 0 ? (
               <>
                 <li className="nav-item">
@@ -56,6 +44,7 @@ function NavBar({ user, updateUser}) {
                   <Link className="nav-link" to="/login" onClick={() => { handleLinkClick(); handleLogoutClick(); }}>Sign out</Link>
                 </li>
               </>
+            // else (ie there's no user logged in) render Login and Sign Up options in navigation 
             ) : (
               <>
                 <li className="nav-item">
