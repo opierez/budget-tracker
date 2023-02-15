@@ -14,10 +14,13 @@ const SignupForm = ({ updateUser }) => {
     budget: 0
   });
 
+  // errors from fetch request 
   const [errors, setErrors] = useState([])
 
+  // used to redirect user to a different route after signup
   const history = useHistory()
 
+  // update form data with user's input 
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -40,8 +43,8 @@ const SignupForm = ({ updateUser }) => {
       if (res.ok) {
         res.json().then((user) => {
         //   console.log(user)
-          history.push('/')
-          updateUser(user);
+          history.push('/') // redirect user to home after successful login
+          updateUser(user); // update user state in parent component
         });
       } else {
         res.json().then(json => {
@@ -145,6 +148,7 @@ const SignupForm = ({ updateUser }) => {
         </div>
         <button type="submit">Submit</button>
     </form>
+    {/* renders login errors to the user */}
     {errors ? errors.map(error => <div key={error}>{error}</div>) : null}
     </div>
   );
