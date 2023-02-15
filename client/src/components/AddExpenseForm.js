@@ -50,7 +50,13 @@ function AddExpenseForm({ user, updateExpenses, updateAmountSpent, selectedExpen
               res.json().then((expense) => {
                 console.log(expense)
                 updateExpenses(expense)
-                updateAmountSpent(expense.id, expense.cost)
+                // check if there's a selectedExpense and if the expense cost is not equal to the selectedExpense cost. 
+                // if the condition is true, invoke the updateAmountSpent function to update the remaining and spent values
+                if (selectedExpense && expense.cost !== selectedExpense.cost) { 
+                    updateAmountSpent(expense.id, expense.cost)
+                }
+                // hide the add/edit expense form after submission
+                handleShowForm()
               });
             } else {
               res.json().then(json => {

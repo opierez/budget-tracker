@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom';
 
 
-function Login({ updateUser }) {
+function Login({ updateUser, updateErrors }) {
 
     const [formData, setFormData] = useState({
         username:'',
@@ -41,6 +41,7 @@ function Login({ updateUser }) {
                 res.json().then(user => {
                     history.push('/') // redirect user to home after successful login
                     updateUser(user)}) // update user state in parent component
+                    updateErrors() // invokes callback function to update error state in App component to empty array (removing 'not authorized' error)
             }else {
                 res.json().then(json => {
                     console.log(json.errors)

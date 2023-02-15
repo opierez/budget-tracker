@@ -47,7 +47,7 @@ function Home({ user, budget }) {
         }
         setExpenses(updatedExpenses)
         calcAmountSpent(updatedExpenses)
-        calcAmountRemaining()
+        // calcAmountRemaining()
     }
       
 
@@ -67,56 +67,42 @@ function Home({ user, budget }) {
         setRemaining(amountRemaining)
     }
 
-    // const updateAmountSpent = (expenseId, cost) => {
-    //     // console.log(spent)
-    //     // let newExpenseCost = newExpense.cost 
-    //     let updateSpent = spent + cost 
-    //     let updateRemaining = budget - updateSpent
-    //     setSpent(updateSpent)
-    //     setRemaining(updateRemaining)
-    // }
-
     const updateAmountSpent = (expenseId, cost) => {
         // find the expense with the specified ID
         const expenseToUpdate = expenses.find(expense => expense.id === expenseId);
       
+        // if it's NOT an existing expense being updated, run this code 
         if (!expenseToUpdate) {
-            let updateSpent = spent + cost 
-            let updateRemaining = budget - updateSpent
-            setSpent(updateSpent)
-            setRemaining(updateRemaining)
+            let updateSpent = spent + cost // create a new value that adds the current spent value with the new expense cost
+            let updateRemaining = budget - updateSpent // create a new value that subtracts the updated spent amount from the budget
+            setSpent(updateSpent) // update spent amount to the new updated spent value
+            setRemaining(updateRemaining) // update remaining amount to the new remaining value
+
+        // if it IS an existing expense being updated, run this code    
         } else {
-            // Expense with the specified ID exists, so update its cost
-            const costDifference = Math.abs(cost - expenseToUpdate.cost);
-            expenseToUpdate.cost = cost;
-            
-            const updatedSpent = spent + costDifference;
-            const updatedRemaining = budget - updatedSpent;
-            
-            setSpent(updatedSpent);
-            setRemaining(updatedRemaining);
+            let value = Math.sign(cost - expenseToUpdate.cost)
+            if (value === -1) {
+              const costDifference = expenseToUpdate.cost - cost
+              let updateSpent = spent - costDifference 
+              let updateRemaining = remaining + costDifference
+              setSpent(updateSpent)
+              setRemaining(updateRemaining) 
+            } else if (value === 1) {
+              const costDifference = cost - expenseToUpdate.cost
+              let updateSpent = spent + costDifference 
+              let updateRemaining = remaining - costDifference
+              setSpent(updateSpent)
+              setRemaining(updateRemaining)
+            }
         }
-        // // calculate the difference between the old and new expense costs
-        // const costDifference = Math.abs(cost - expenseToUpdate.cost);
-      
-        // // update the expense with the new cost
-        // expenseToUpdate.cost = cost;
-      
-        // // update the spent and remaining amounts
-        // const updatedSpent = spent + costDifference;
-        // const updatedRemaining = budget - updatedSpent;
-      
-        // setSpent(updatedSpent);
-        // setRemaining(updatedRemaining);
+        
       }
       
 
     const handleDeletedExpense = (id) => {
         // find the deleted expense from the expenses array and set it to the deletedExpense variable
         const deletedExpense = expenses.find(expense => expense.id === id)
-        console.log(deletedExpense)
-        console.log(deletedExpense.cost)
-        console.log(deletedExpense.id)
+
         if (deletedExpense) {
             // filter the expenses array for all the expenses that don't match the deleted expense id and update expense state
             const updatedExpenses = expenses.filter(expense => expense.id !== id)
@@ -131,8 +117,6 @@ function Home({ user, budget }) {
             setRemaining(updatedRemaining)
 
         }
-        // setExpenses(expenses.filter(expense => expense.id !== id))
-        
     }
    
 
