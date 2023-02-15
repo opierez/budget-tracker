@@ -33,6 +33,11 @@ function App() {
     })
   }, [])
 
+  // resets errors after successful login or signup
+  const updateErrors = () => {
+    setErrors([])
+  }
+
   // useEffect(() => {
   //   fetch('/categories')
   //     .then(res => res.json())
@@ -57,12 +62,12 @@ function App() {
 
           {/* /users/new => Signup Page */}
           <Route path='/users/new'>
-            <SignupForm updateUser={updateUser}/>
+            <SignupForm updateUser={updateUser} updateErrors={updateErrors}/>
           </Route>
 
           {/* /login => Login Page */}
           <Route path='/login'>
-            <Login updateUser={updateUser}/>
+            <Login updateUser={updateUser} updateErrors={updateErrors}/>
           </Route>
 
           {/* /users/:id => User Profile Page */}
