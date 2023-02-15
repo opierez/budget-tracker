@@ -3,7 +3,7 @@ class Expense < ApplicationRecord
   belongs_to :category
 
   validates :name, :cost, presence: true 
-  validates :cost, numericality: { greater_than: 0 }
+  validates :cost, numericality: { greater_than: 0, only_integer: true }
 
   
 end

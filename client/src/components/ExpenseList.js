@@ -5,46 +5,21 @@ import AddExpenseForm from './AddExpenseForm'
 
 
 
-function ExpenseList({ user, expenses, updateExpenses, loading }) {
+function ExpenseList({ user, expenses, updateExpenses, loading, updateAmountSpent, handleDeletedExpense }) {
     // console.log(user.id)
-
-    // const [expenses, setExpenses] = useState([])
-    // const [errors, setErrors] = useState(null)
-    // const [loading, setLoading] = useState(true)
+    // console.log(expenses.category)
 
     // state for rendering the form
     const [showForm, setShowForm] = useState(false);
+    // state for the expense item that is being edited
+    const [selectedExpense, setSelectedExpense] = useState(null);
 
-    // const expenses = [
-    //     { id: 1213123, name: "Shopping", cost: 50, category: "Recreational spending" },
-    //     { id: 1213124, name: "Holiday", cost: 300, category: "Vacation"},
-    //     { id: 12131859, name: "MTA card", cost: 32, category: "Transportation"},
-    //     { id: 121312993, name: "Internet", cost: 40, category: "Utilities"},
-    //     { id: 1213123434, name: "Rent", cost: 1050, category: "Housing"},
-    // ]
+    const handleSelectedExpense = (expense) => {
+        setSelectedExpense(expense)
+    }
 
-    // useEffect(() => {
-    //     setLoading(true)
-    //     fetch(`/expenses/${user.id}`)
-    //         .then(res => {
-    //             if (res.ok) {
-    //                 res.json().then(expenses => {
-    //                 console.log(expenses)
-    //                 setExpenses(expenses)
-    //           })
-    //             } else {
-    //                 res.json().then(data => setErrors(data.error))
-    //             }
-    //         })
-    //         .finally(() => setLoading(false));
-    // }, [user])
-
-    // const handleExpenses = (newExpense) => {
-    //    setExpenses([...expenses, newExpense])
-    // }
-
-    const handleExpenses = (newExpense) => {
-        updateExpenses(newExpense)
+    const handleShowForm = () => {
+        setShowForm(!showForm)
     }
 
     const renderExpenses = () => {
@@ -59,9 +34,15 @@ function ExpenseList({ user, expenses, updateExpenses, loading }) {
         return expenses.map((expense) => (
             <ExpenseItem 
                 key={expense.id}
-                name={expense.name}
-                cost={expense.cost}
-                category={expense.category}
+                expense={expense}
+                // id={expense.id}
+                // name={expense.name}
+                // cost={expense.cost}
+                category={expense.category.category}
+                handleDeletedExpense={handleDeletedExpense}
+                handleSelectedExpense={handleSelectedExpense}
+                handleShowForm={handleShowForm}
+
             />
         ));
 
@@ -70,9 +51,17 @@ function ExpenseList({ user, expenses, updateExpenses, loading }) {
     return(
         <>
         <div className="d-flex justify-content-between">
-            <AiFillPlusCircle size="3em" onClick={() => setShowForm(!showForm)} />
+            <AiFillPlusCircle size="3em" onClick={() => handleShowForm()} />
         </div>
-        {showForm && <AddExpenseForm user={user} handleExpenses={handleExpenses}/>}
+        {showForm && <AddExpenseForm 
+                        user={user} 
+                        // handleExpenses={handleExpenses}
+                        updateExpenses={updateExpenses} 
+                        updateAmountSpent={updateAmountSpent}
+                        selectedExpense={selectedExpense}
+                        handleSelectedExpense={handleSelectedExpense}
+                        handleShowForm={handleShowForm}
+                        />}
         <ul className='list-group mt-3'>
             {renderExpenses()}
         </ul>
