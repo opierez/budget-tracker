@@ -28,7 +28,7 @@ function NavBar({ user, updateUser}) {
     return (
   
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link className="navbar-brand" to="/">Home</Link>
+        <Link className="navbar-brand" to="/" onClick={handleLinkClick}>Home</Link>
         <button className="navbar-toggler" type="button" onClick={() => setIsOpen(!isOpen)} aria-controls="navbarNav" aria-expanded={isOpen} aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -39,6 +39,9 @@ function NavBar({ user, updateUser}) {
               <>
                 <li className="nav-item">
                   <Link className="nav-link" to={`/users/${user.id}`} onClick={handleLinkClick}>My Profile</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={`/users/${user.id}/analytics`} onClick={handleLinkClick}>Category Analysis</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/login" onClick={() => { handleLinkClick(); handleLogoutClick(); }}>Sign out</Link>

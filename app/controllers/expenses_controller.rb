@@ -29,6 +29,13 @@ class ExpensesController < ApplicationController
         head :no_content 
     end
 
+    def user_categories 
+        user = find_user 
+        categories = user.categories.pluck(:category) # returns an array of all the user's category attribute values 
+        category_count = categories.tally # counts the occurence of each category and returns a hash with the elements of the array as keys and the corresponding count as values
+        render json: category_count, status: :ok 
+    end
+
     private 
 
     def expense_params 

@@ -7,6 +7,7 @@ import SignupForm from './components/SignupForm';
 import Home from './components/Home';
 import ProfilePage from './components/ProfilePage';
 import Login from './components/Login';
+import Analysis from './components/Analysis';
 
 function App() {
   const [budget, setBudget] = useState(0)
@@ -67,6 +68,10 @@ function App() {
           {/* /login => Login Page */}
           <Route path='/login'>
             <Login updateUser={updateUser} updateErrors={updateErrors}/>
+          </Route>
+
+          <Route path='/users/:id/analytics'>
+            <Analysis />
           </Route>
           
           {/* /users/:id => User Profile Page */}
