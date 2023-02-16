@@ -36,6 +36,7 @@ function ExpenseItem({ expense, category, handleDeletedExpense, handleSelectedEx
                 <span className="badge badge-primary badge-pill mr-3" style={{ color: 'black' }}>
                     ${cost}
                 </span>
+                {/* if user clicks on the edit button, invoke the cb function to set state with the selected expense item attributes */}
                 <AiFillEdit size='1.2em' title='Edit' onClick={() => { handleSelectedExpense({ id, name, cost, category }); handleShowForm(); }}></AiFillEdit>
                 <TiDelete size='1.5em' title='Delete' onClick={handleDelete}></TiDelete>
             </div>

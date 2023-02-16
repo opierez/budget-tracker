@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :expenses 
-  resources :categories, only: [:index, :create]
+  resources :categories, only: [:index, :show, :create]
   resources :users, only: [:show, :create]
   post '/signup', to: "users#create"
   get '/authorized_user', to: "users#show"

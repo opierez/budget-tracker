@@ -7,7 +7,7 @@ import SignupForm from './components/SignupForm';
 import Home from './components/Home';
 import ProfilePage from './components/ProfilePage';
 import Login from './components/Login';
-
+import { UserProvider } from "../src/context/user";
 
 function App() {
   const [budget, setBudget] = useState(0)
@@ -70,15 +70,21 @@ function App() {
             <Login updateUser={updateUser} updateErrors={updateErrors}/>
           </Route>
 
-          {/* /users/:id => User Profile Page */}
-          <Route path='/users/:id'>
-            <ProfilePage user={user}/>
-          </Route>
+          
+            {/* /users/:id => User Profile Page */}
+            <Route path='/users/:id'>
+              <ProfilePage 
+              user={user}
+              />
+            </Route>
 
-          {/* / => Home Page, Root Route */}
-          <Route exact path='/'>
-            <Home user={user} budget={budget}/>
-          </Route>
+            {/* / => Home Page, Root Route */}
+            <Route exact path='/'>
+              <Home 
+              user={user} 
+              budget={budget}/>
+            </Route>
+         
 
         </Switch>
     
