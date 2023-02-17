@@ -34,7 +34,7 @@ function NavBar({ user, updateUser}) {
         </button>
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav">
-            {/* if user truthy and has at least one property (ie a user is logged in) render Profile and Sign out options in navigation */}
+            {/* if there's a logged in user, render Profile and Sign out options in navigation */}
             {user && Object.keys(user).length !== 0 ? (
               <>
                 <li className="nav-item">
@@ -47,7 +47,7 @@ function NavBar({ user, updateUser}) {
                   <Link className="nav-link" to="/login" onClick={() => { handleLinkClick(); handleLogoutClick(); }}>Sign out</Link>
                 </li>
               </>
-            // else (ie there's no user logged in) render Login and Sign Up options in navigation 
+            // if there's no user logged in, render Login and Sign Up options in navigation 
             ) : (
               <>
                 <li className="nav-item">

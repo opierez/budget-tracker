@@ -2,13 +2,12 @@ import React, {useState, useEffect } from "react";
 import ExpenseList from "./ExpenseList";
 
 function Home({ user, budget }) {
-    // const [budget, setBudget] = useState(0);
     const [remaining, setRemaining] = useState(0);
     const [spent, setSpent] = useState(0);
     const [expenses, setExpenses] = useState([])
     const [errors, setErrors] = useState(null)
     const [loading, setLoading] = useState(true)
-    const [totalExpenses, setTotalExpenses] = useState(0)
+   
 
     // fetch user's expenses 
     useEffect(() => {
@@ -21,7 +20,6 @@ function Home({ user, budget }) {
                     setExpenses(expenses)
                     calcAmountSpent(expenses)
                     // console.log(spent)
-                    // calcAmountRemaining()
               })
                 } else {
                     res.json().then(data => setErrors(data.error))
@@ -30,11 +28,12 @@ function Home({ user, budget }) {
             .finally(() => setLoading(false))
     }, [user])
 
+
     const updateExpenses = (expense) => {
         let updatedExpenses
-        const existingExpense = expenses.find(e => e.id === expense.id)
-        if (existingExpense) {
-          // Update the existing expense
+        const existingExpense = expenses.find(e => e.id === expense.id) // checks expenses to find out if the expense being passed in is an existing expense
+        if (existingExpense) { 
+          // Gather all existing expenses and the updated expense 
           updatedExpenses = expenses.map(e => {
             if (e.id === expense.id) {
               return expense
@@ -45,12 +44,11 @@ function Home({ user, budget }) {
           // Add the new expense
           updatedExpenses = [...expenses, expense]
         }
-        setExpenses(updatedExpenses)
-        calcAmountSpent(updatedExpenses)
-        // calcAmountRemaining()
+        setExpenses(updatedExpenses) // updates expenses with updated expense data 
+        calcAmountSpent(updatedExpenses) // invoke function to update amount spent 
     }
       
-
+    // calculates the amount spent
     const calcAmountSpent = (expenses) => {
         let total = 0
         expenses.map(expense => {
@@ -58,45 +56,47 @@ function Home({ user, budget }) {
             total += expense.cost 
             
         })
-        setSpent(total)
-        calcAmountRemaining(total)
+        setSpent(total) // updates the spent amount
+        calcAmountRemaining(total) // invoke function to update the amount remaining
     }
 
+    // calculates the amount remaining
     const calcAmountRemaining = (spentAmount) => {
         let amountRemaining = budget - spentAmount 
-        setRemaining(amountRemaining)
+        setRemaining(amountRemaining) // updates the remaining amount
     }
 
-    const updateAmountSpent = (expenseId, cost) => {
-        // find the expense with the specified ID
-        const expenseToUpdate = expenses.find(expense => expense.id === expenseId);
+    // checks to see if the expense item that was submitted was an existing item. If it is and the item cost has changed, invoke the cb function to update the spent amount 
+    // const updateAmountSpent = (expenseId, cost) => {
+    //     // find the expense with the specified ID
+    //     const expenseToUpdate = expenses.find(expense => expense.id === expenseId);
       
-        // if it's NOT an existing expense being updated, run this code 
-        if (!expenseToUpdate) {
-            let updateSpent = spent + cost // create a new value that adds the current spent value with the new expense cost
-            let updateRemaining = budget - updateSpent // create a new value that subtracts the updated spent amount from the budget
-            setSpent(updateSpent) // update spent amount to the new updated spent value
-            setRemaining(updateRemaining) // update remaining amount to the new remaining value
+    //     // if it's NOT an existing expense being updated, run this code 
+    //     if (!expenseToUpdate) {
+    //         let updateSpent = spent + cost // create a new value that adds the current spent value with the new expense cost
+    //         let updateRemaining = budget - updateSpent // create a new value that subtracts the updated spent amount from the budget
+    //         setSpent(updateSpent) // update spent amount to the new updated spent value
+    //         setRemaining(updateRemaining) // update remaining amount to the new remaining value
 
-        // if it IS an existing expense being updated, run this code    
-        } else {
-            let value = Math.sign(cost - expenseToUpdate.cost)
-            if (value === -1) {
-              const costDifference = expenseToUpdate.cost - cost
-              let updateSpent = spent - costDifference 
-              let updateRemaining = remaining + costDifference
-              setSpent(updateSpent)
-              setRemaining(updateRemaining) 
-            } else if (value === 1) {
-              const costDifference = cost - expenseToUpdate.cost
-              let updateSpent = spent + costDifference 
-              let updateRemaining = remaining - costDifference
-              setSpent(updateSpent)
-              setRemaining(updateRemaining)
-            }
-        }
+    //     // if it IS an existing expense being updated, run this code    
+    //     } else {
+    //         let value = Math.sign(cost - expenseToUpdate.cost)
+    //         if (value === -1) {
+    //           const costDifference = expenseToUpdate.cost - cost
+    //           let updateSpent = spent - costDifference 
+    //           let updateRemaining = remaining + costDifference
+    //           setSpent(updateSpent)
+    //           setRemaining(updateRemaining) 
+    //         } else if (value === 1) {
+    //           const costDifference = cost - expenseToUpdate.cost
+    //           let updateSpent = spent + costDifference 
+    //           let updateRemaining = remaining - costDifference
+    //           setSpent(updateSpent)
+    //           setRemaining(updateRemaining)
+    //         }
+    //     }
         
-      }
+    //   }
       
 
     const handleDeletedExpense = (id) => {
@@ -148,7 +148,7 @@ function Home({ user, budget }) {
                     expenses={expenses} 
                     loading={loading} 
                     updateExpenses={updateExpenses}
-                    updateAmountSpent={updateAmountSpent}
+                    // updateAmountSpent={updateAmountSpent}
                     handleDeletedExpense={handleDeletedExpense}
                     />
               </div>

@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Track It
+A user-friendly budget tracking app designed to help individuals monitor their expenses, identify their spending habits, and better manage their finances.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## User Functionality
 
-## Available Scripts
+When visiting the site, users can:
 
-In the project directory, you can run:
+- Sign up for an account
+- Login/Logout of an existing account
+- Navigate away from the site and return with their account info still populated 
+- Set a weekly, monthly, or annual budget (you decide!)
+- Add/create expenses: name, cost, and category
+- Create custom categories for their expenses if their desired expense category doesn't exist
+- Edit expense items where the existing expense data will be prefilled in the form
+- Delete expense items 
+- See adjusted Remaining and Spent amounts when expenses are added or edited 
+- View a dynamic category analysis that shows which category they spend the most on to better understand spending habits and identify areas for budgeting optimization  
 
-### `npm start`
+## How to set up the site
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Deployed App:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+https://budget-tracker-app-qwza.onrender.com
+```
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+- React
+- Ruby
+- Rails 
+- Active Record
+- Bootstrap 
+- Javascript
+- JSON
+- React Router DOM
+- React Icons
+- CSS
+- React Google Charts 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Preview
+## Signup Page
+![Track-It-Signup](/readme-images/Signup.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Home Page
+![Track-It-Home](/readme-images/Home.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Add Expense Experience
+![Track-It-Add-Expense](/readme-images/Add_Expense.png)
 
-### `npm run eject`
+## Edit Existing Expense Experience
+![Track-It-Edit-Existing-Expense](/readme-images/Edit_Existing_Expense.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Create Custom Category Experience
+![Track-It-Create-Custom-Category](/readme-images/Create_Custom_Category.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Category Analysis Page
+![Track-It-Category-Analysis](/readme-images/Category_Analysis.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Notes/Credits:
+- Some of the Home page styles was taken from  Chris Blakely's tutorial: https://www.youtube.com/watch?v=aeYxBd1it7I 
+- Some of the Profile Page styles was taken from this template: https://bbbootstrap.com/snippets/bootstrap-edit-profile-accounts-setting-template-80240656 
+- Donut pie chart taken from React Google Charts: https://www.react-google-charts.com/examples/pie-chart 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Team
 
-## Learn More
+**Olivia Perez**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Profile](https://github.com/opierez)

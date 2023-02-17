@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function AddExpenseForm({ user, updateExpenses, updateAmountSpent, selectedExpense, handleSelectedExpense, handleShowForm }) {
+function AddExpenseForm({ user, updateExpenses, selectedExpense, handleSelectedExpense, handleShowForm }) {
 
     const [isEditing, setIsEditing] = useState(false)
     const [selectedExpenseId, setSelectedExpenseId] = useState(null)
@@ -83,11 +83,11 @@ function AddExpenseForm({ user, updateExpenses, updateAmountSpent, selectedExpen
             if (res.ok) {
               res.json().then((expense) => {
                 console.log(expense)
-                updateExpenses(expense)
-                // checks to see if the expense item that was submitted was an existing item. If it is and the item cost has changed, invoke the cb function to update the spent amount 
-                if (selectedExpense && expense.cost !== selectedExpense.cost) { 
-                    updateAmountSpent(expense.id, expense.cost)
-                }
+                updateExpenses(expense) //cb function to update expenses with new or existing expense data
+                // checks to see if the returned expense item that was submitted was an existing item and if the item cost has changed. invoke the cb function to update the spent amount 
+                // if (selectedExpense && expense.cost !== selectedExpense.cost) { 
+                //     updateAmountSpent(expense.id, expense.cost)
+                // }
                 setExpenseForm({ id: user.id, name: "", cost: 0, category: "" }) // reset the form data to its initial state
                 handleSelectedExpense(null); // cb function that resets the selectedExpense state to null, meaning the user is no longer editing an expense item
                 handleShowForm() // hide the add/edit expense form after submission

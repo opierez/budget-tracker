@@ -10,6 +10,8 @@ function ExpenseItem({ expense, category, handleDeletedExpense, handleSelectedEx
     
     const [errors, setErrors] = useState([])
 
+
+    // deletes expense 
     const handleDelete = () => {
         fetch(`/expenses/${id}`, {
             method: 'DELETE',
