@@ -44,12 +44,12 @@ const SignupForm = ({ updateUser, updateErrors }) => {
         res.json().then((user) => {
         //   console.log(user)
             history.push('/') // redirect user to home after successful login
-            updateUser(user); // update user state in parent component
-            updateErrors() // invokes callback function to update error state in App component to empty array (removing 'not authorized' error)
+            updateUser(user); // updates user state in parent component
+            updateErrors() // invokes cb function to update error state in App component to empty array (removing 'not authorized' error)
         });
       } else {
         res.json().then(json => {
-            console.log(json.errors)
+            // console.log(json.errors)
             setErrors(json.errors)
         })
       }

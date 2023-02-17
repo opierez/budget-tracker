@@ -12,12 +12,13 @@ function Login({ updateUser, updateErrors }) {
     // errors from fetch request 
     const [errors, setErrors] = useState([])
 
+    // used to redirect user to a different route after signup
     const history = useHistory()
 
-    // deconstructs username and password to be used in from values
+    // deconstructs username and password to be used in form values
     const {username, password} = formData
 
-    // update form data with user's input 
+    // updates form data with user's input 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
@@ -41,10 +42,10 @@ function Login({ updateUser, updateErrors }) {
                 res.json().then(user => {
                     history.push('/') // redirect user to home after successful login
                     updateUser(user)}) // update user state in parent component
-                    updateErrors() // invokes callback function to update error state in App component to empty array (removing 'not authorized' error)
+                    updateErrors() // invokes cb function to update error state in App component to empty array (removing 'not authorized' error)
             }else {
                 res.json().then(json => {
-                    console.log(json.errors)
+                    // console.log(json.errors)
                     setErrors(json.errors)
                 })
             }

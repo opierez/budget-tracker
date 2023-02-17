@@ -38,12 +38,6 @@ function App() {
     setErrors([])
   }
 
-  // useEffect(() => {
-  //   fetch('/categories')
-  //     .then(res => res.json())
-  //     .then(data => console.log(data))
-  // }, [])
-
   // updates user state after login, signup, or logout. if user exists, update budget state   
   const updateUser = (user) => {
       // console.log(user)
@@ -55,7 +49,7 @@ function App() {
 
   return (
     <div className="container">
-      {errors ? errors.map(error => <div key={error}>{error}</div>) : null}
+      {errors ? errors.map(error => <div key={error}>{error}</div>) : null} 
       <NavBar user={user} updateUser={updateUser}/>
 
         <Switch>

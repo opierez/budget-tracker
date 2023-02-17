@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 
 function Analysis() {
 
+    // holds user's expense categories and the count for each category
     const [userCategoryCount, setUserCategoryCount] = useState({})
 
     const { id } = useParams()
@@ -21,8 +22,10 @@ function Analysis() {
     // console.log(Object.entries(userCategoryCount))
 
     const dataTitleArr = ["Category", "Count"]
+    // creates an array of arrays, where each sub-array contains key/value pair from the user category count data 
     const categoriesArr = Object.entries(userCategoryCount)
 
+    // combines the two arrays 
     const categoryData = [
         dataTitleArr, 
         ...categoriesArr.map(([category, count]) => [category, count])
