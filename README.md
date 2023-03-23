@@ -2,7 +2,7 @@
 A user-friendly budget tracking app designed to help individuals monitor their expenses, identify their spending habits, and better manage their finances.
 
 ## How to access
-Deployed App: <a href="https://budget-tracker-app-qwza.onrender.com">Track It</a>
+Deployed App: <a href="https://budget-tracker-app-qwza.onrender.com/users/new">Track It</a>
 
 ## User Functionality
 
