@@ -19,6 +19,27 @@ When visiting the site, users can:
 - View adjusted Remaining and Spent amounts: Users can see the adjusted Remaining and Spent amounts when expenses are added or edited, ensuring they have an accurate view of their budget status 
 - Analyze spending habits: Users can view a dynamic category analysis that shows which category they spend the most on, helping them to identify areas for budgeting optimization and making better financial decisions
 
+## Backend Feature Highlights
+- Three models with a recipricol many-to-many relationship using two has-many-through relationships
+- Full CRUD actions with a minimum of create and read actions for each resource
+- RESTful routing convention for backend routes
+- Active Record validations for each model
+- Authentication
+- Authorization 
+- Password protection
+
+
+## Frontend Feature Highlights
+- Multiple client-side routes using React Router
+- Authorization
+- Custom CSS
+- React hooks: useEffect and useState
+- React Router DOM: BrowserRouter, Switch, Route, Link
+- Form submissions
+- Algorithms
+- Client-side HTTP requests
+- Updating front end state upon successfull response from client-side HTTP requests
+- Validation error rendering
 
 ## Technologies
 
