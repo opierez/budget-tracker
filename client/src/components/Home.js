@@ -65,38 +65,6 @@ function Home({ user, budget }) {
         let amountRemaining = budget - spentAmount 
         setRemaining(amountRemaining) // updates the remaining amount
     }
-
-    // checks to see if the expense item that was submitted was an existing item. If it is and the item cost has changed, invoke the cb function to update the spent amount 
-    // const updateAmountSpent = (expenseId, cost) => {
-    //     // find the expense with the specified ID
-    //     const expenseToUpdate = expenses.find(expense => expense.id === expenseId);
-      
-    //     // if it's NOT an existing expense being updated, run this code 
-    //     if (!expenseToUpdate) {
-    //         let updateSpent = spent + cost // create a new value that adds the current spent value with the new expense cost
-    //         let updateRemaining = budget - updateSpent // create a new value that subtracts the updated spent amount from the budget
-    //         setSpent(updateSpent) // update spent amount to the new updated spent value
-    //         setRemaining(updateRemaining) // update remaining amount to the new remaining value
-
-    //     // if it IS an existing expense being updated, run this code    
-    //     } else {
-    //         let value = Math.sign(cost - expenseToUpdate.cost)
-    //         if (value === -1) {
-    //           const costDifference = expenseToUpdate.cost - cost
-    //           let updateSpent = spent - costDifference 
-    //           let updateRemaining = remaining + costDifference
-    //           setSpent(updateSpent)
-    //           setRemaining(updateRemaining) 
-    //         } else if (value === 1) {
-    //           const costDifference = cost - expenseToUpdate.cost
-    //           let updateSpent = spent + costDifference 
-    //           let updateRemaining = remaining - costDifference
-    //           setSpent(updateSpent)
-    //           setRemaining(updateRemaining)
-    //         }
-    //     }
-        
-    //   }
       
 
     const handleDeletedExpense = (id) => {

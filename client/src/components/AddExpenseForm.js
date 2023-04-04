@@ -110,63 +110,72 @@ function AddExpenseForm({ user, updateExpenses, selectedExpense, handleSelectedE
 
     return(
         <div>
-        {/* on submit, check to see if showCustomInput and customCategory evaluates to true or false */}
-        <form onSubmit={(e) => handleSubmit(e, showCustomInput && customCategory)}> 
-            <div className="row">
-                <div className="col-sm">
-                    <label htmlFor="name">Expense Name:</label>
-                    <input 
-                        type="text" 
-                        className="form-control"  
-                        name="name" 
-                        value={expenseForm.name} 
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="col-sm">
-                    <label htmlFor="cost">Cost:</label>
-                    <input 
-                        type="number" 
-                        className="form-control" 
-                        name="cost"
-                        value={expenseForm.cost} 
-                        onChange={handleChange}
-                        placeholder="Enter a number"
-                    />
-                </div>
-                <div className="col-sm">
-                    <select className="form-select" value={expenseForm.category} onChange={(e) => handleCategoryChange(e)}>
-                        <option value="">Select a category</option>
-                        {categories.map((category) => (
-                            <option key={category.id} value={category.category}>
-                                {category.category}
-                            </option>
-                        ))}
-                        <option value="custom">Custom</option>
-                    </select>
-                </div>
-                {showCustomInput && (
-                    <div className="col-sm">
-                        <label htmlFor="custom-category">Custom Category:</label>
-                        <input 
-                            type="text"
-                            className="form-control" 
-                            value={customCategory}
-                            onChange={handleCustomCategory}
-                        />
+            {/* on submit, check to see if showCustomInput and customCategory evaluates to true or false */}
+            <form onSubmit={(e) => handleSubmit(e, showCustomInput && customCategory)}> 
+                <div className="row">
+                    <div className="col">
+                        <div className="form-group">
+                            <label htmlFor="name">Expense Name:</label>
+                            <input 
+                                type="text" 
+                                className="form-control"  
+                                name="name" 
+                                value={expenseForm.name} 
+                                onChange={handleChange}
+                            />
+                        </div>
                     </div>
-                )}
-                <div className="form-group mt-3">
-                    <button type="submit" className="btn btn-primary">
-                        Submit
-                    </button>
-                    <button type="button" className="btn btn-secondary ml-2" onClick={() => { handleCancel(); handleShowForm(); }}>
-                        Cancel
-                    </button>
+                    <div className="col">
+                        <div className="form-group">
+                            <label htmlFor="cost">Cost:</label>
+                            <input 
+                                type="number" 
+                                className="form-control" 
+                                name="cost"
+                                value={expenseForm.cost} 
+                                onChange={handleChange}
+                                placeholder="Enter a number"
+                            />
+                        </div>
+                    </div>
+                    <div className="col">
+                        <div className="form-group">
+                            <label htmlFor="category">Category:</label>
+                            <select className="form-select" value={expenseForm.category} onChange={(e) => handleCategoryChange(e)}>
+                                <option value="">Select a category</option>
+                                {categories.map((category) => (
+                                    <option key={category.id} value={category.category}>
+                                        {category.category}
+                                    </option>
+                                ))}
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                    </div>
+                    {showCustomInput && (
+                        <div className="col">
+                            <div className="form-group">
+                                <label htmlFor="custom-category">Custom Category:</label>
+                                <input 
+                                    type="text"
+                                    className="form-control" 
+                                    value={customCategory}
+                                    onChange={handleCustomCategory}
+                                />
+                            </div>
+                        </div>
+                    )}
+                    <div className="form-group mt-3">
+                        <button type="submit" className="btn btn-primary mr-2">
+                            Submit
+                        </button>
+                        <button type="button" className="btn btn-secondary ml-5" onClick={() => { handleCancel(); handleShowForm(); }}>
+                            Cancel
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
-        {errors ? errors.map(error => <div key={error}>{error}</div>) : null}
+            </form>
+            {errors ? errors.map(error => <div key={error}>{error}</div>) : null}
         </div>
     )
 }
