@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { BrowserRouter as Router, Link} from 'react-router-dom';
-
+import '../styles/NavBar.css'
 
 
 function NavBar({ user, updateUser}) {
@@ -27,13 +27,13 @@ function NavBar({ user, updateUser}) {
   
     return (
   
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg">
         <Link className="navbar-brand" to="/" onClick={handleLinkClick}>Home</Link>
         <button className="navbar-toggler" type="button" onClick={() => setIsOpen(!isOpen)} aria-controls="navbarNav" aria-expanded={isOpen} aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav ml-auto">
             {/* if there's a logged in user, render Profile and Sign out options in navigation */}
             {user && Object.keys(user).length !== 0 ? (
               <>
