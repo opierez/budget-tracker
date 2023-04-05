@@ -26,9 +26,8 @@ function NavBar({ user, updateUser}) {
 
   
     return (
-  
-      <nav className="navbar navbar-expand-lg">
-        <Link className="navbar-brand" to="/" onClick={handleLinkClick}>Home</Link>
+      <nav className="navbar custom-navbar navbar-expand-lg">
+        {user && Object.keys(user).length !== 0 && <Link className="navbar-brand home-link" to="/" onClick={handleLinkClick}>Home</Link>}
         <button className="navbar-toggler" type="button" onClick={() => setIsOpen(!isOpen)} aria-controls="navbarNav" aria-expanded={isOpen} aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -61,7 +60,6 @@ function NavBar({ user, updateUser}) {
           </ul>
         </div>
       </nav>
- 
     );
   }
 
