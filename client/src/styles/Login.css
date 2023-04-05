@@ -1,0 +1,41 @@
+/* 
+.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+}
+   */
+.login-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin-left: 50px;
+}
+  
+  /* @media only screen and (min-width: 768px) {
+    .login-image {
+      width: auto;
+      max-width: auto;
+      height: 100%;
+    }
+  }
+  
+  @media only screen and (min-width: 992px) {
+    .col-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+   */
+
+   @media only screen and (max-width: 767px) {
+    .row {
+      flex-direction: column;
+    }
+    .col-md-6 {
+      max-width: 100%;
+    }
+    .login-image {
+      margin-bottom: 20px;
+    }
+  }
+  

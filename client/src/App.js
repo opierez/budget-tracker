@@ -48,44 +48,38 @@ function App() {
 
 
   return (
-    <div className="container">
-      {errors ? errors.map(error => <div key={error}>{error}</div>) : null} 
-      <NavBar user={user} updateUser={updateUser}/>
-
+    <div className="container-fluid">
+    <div className="row">
+      <NavBar user={user} updateUser={updateUser} />
+      <div className="row mx-auto w-100 mt-4">
         <Switch>
-
           {/* /users/new => Signup Page */}
-          <Route path='/users/new'>
-            <SignupForm updateUser={updateUser} updateErrors={updateErrors}/>
+          <Route path="/users/new">
+            <SignupForm updateUser={updateUser} updateErrors={updateErrors} />
           </Route>
 
           {/* /login => Login Page */}
-          <Route path='/login'>
-            <Login updateUser={updateUser} updateErrors={updateErrors}/>
+          <Route path="/login">
+            <Login updateUser={updateUser} updateErrors={updateErrors} />
           </Route>
 
-          <Route path='/users/:id/analytics'>
+          <Route path="/users/:id/analytics">
             <Analysis />
           </Route>
-          
+
           {/* /users/:id => User Profile Page */}
-          <Route path='/users/:id'>
-            <ProfilePage 
-            user={user}
-            />
+          <Route path="/users/:id">
+            <ProfilePage user={user} />
           </Route>
 
           {/* / => Home Page, Root Route */}
-          <Route exact path='/'>
-            <Home 
-            user={user} 
-            budget={budget}/>
+          <Route exact path="/">
+            <Home user={user} budget={budget} />
           </Route>
-         
-
         </Switch>
-    
+      </div>
     </div>
+  </div>
   );
 }
 

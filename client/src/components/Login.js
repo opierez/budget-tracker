@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom';
+import '../styles/Login.css'
 
 
 function Login({ updateUser, updateErrors }) {
@@ -55,18 +56,53 @@ function Login({ updateUser, updateErrors }) {
 
 
     return (
-        <div> 
-        <form onSubmit={onSubmit}>
-            <label>Username</label>
-            <input type='text' name='username' value={username} onChange={handleChange} />
-        
-            <label>Password</label>
-            <input type='password' name='password' value={password} onChange={handleChange} />
-        
-            <input type='submit' value='Log in' />
-        </form>
-        {/* renders login errors to the user */}
-        {errors ? errors.map(error => <div key={error}>{error}</div>) : null}
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-md-6 col-12 d-flex align-items-center justify-content-center">
+                    <img
+                        src={`${process.env.PUBLIC_URL}/images/kelly-sikkema-unsplash.jpg`}
+                        alt="Landscape"
+                        className="login-image"
+                        />
+                </div>
+                <div className="col-md-6 col-12 d-flex align-items-center justify-content-center">
+                    <form onSubmit={onSubmit} className="w-50">
+                    <h2 className="mb-4">Login</h2>
+                    <div className="mb-3">
+                        <label htmlFor="username" className="form-label">
+                        Username
+                        </label>
+                        <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        value={username}
+                        onChange={handleChange}
+                        className="form-control"
+                        required
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="password" className="form-label">
+                        Password
+                        </label>
+                        <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        value={password}
+                        onChange={handleChange}
+                        className="form-control"
+                        required
+                        />
+                    </div>
+                    {errors ? errors.map((error) => <p key={error} style={{color: 'red'}}>{error}</p>) : null}
+                    <button type="submit" className="btn btn-primary">
+                        Log in
+                    </button>
+                    </form>
+                </div>
+            </div>
         </div>
     )
 }

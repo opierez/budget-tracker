@@ -79,6 +79,7 @@ When visiting the site, users can:
 - Some of the Home page styles was taken from  Chris Blakely's tutorial: https://www.youtube.com/watch?v=aeYxBd1it7I 
 - Some of the Profile Page styles was taken from this template: https://bbbootstrap.com/snippets/bootstrap-edit-profile-accounts-setting-template-80240656 
 - Donut pie chart taken from React Google Charts: https://www.react-google-charts.com/examples/pie-chart 
+- Login/Signup page image was taken from Unsplash by Kelly Sikkema: https://unsplash.com/photos/3-Tc_5LROrM 
 
 ## Team
 
