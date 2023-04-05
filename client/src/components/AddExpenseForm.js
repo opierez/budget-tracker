@@ -45,7 +45,8 @@ function AddExpenseForm({ user, updateExpenses, selectedExpense, handleSelectedE
     const handleCategoryChange = (e) => {
         // console.log(e.target.value)
         const selectedCategory = e.target.value 
-        if (selectedCategory === 'custom') { // if the user selects the custom category, show the custom category input field 
+        if (selectedCategory === 'Custom') { // if the user selects the custom category, show the custom category input field 
+            setExpenseForm({...expenseForm, category: 'Custom'}) // set category to 'Custom' when user selects custom category
             setShowCustomInput(true)
         } else { 
             setShowCustomInput(false) // hide the custom input field
@@ -148,7 +149,6 @@ function AddExpenseForm({ user, updateExpenses, selectedExpense, handleSelectedE
                                         {category.category}
                                     </option>
                                 ))}
-                                <option value="custom">Custom</option>
                             </select>
                         </div>
                     </div>
