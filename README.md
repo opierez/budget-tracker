@@ -57,8 +57,8 @@ When visiting the site, users can:
 - React Google Charts 
 
 ## Preview
-## Signup Page
-![Track-It-Signup](/readme-images/Signup.png)
+## Login Page
+![Track-It-Signup](/readme-images/Login.png)
 
 ## Home Page
 ![Track-It-Home](/readme-images/Home.png)
