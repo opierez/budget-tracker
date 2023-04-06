@@ -60,6 +60,9 @@ When visiting the site, users can:
 ## Login Page
 ![Track-It-Signup](/readme-images/Login.png)
 
+## Sign Up Page
+![Track-It-Signup](/readme-images/Signup.png)
+
 ## Home Page
 ![Track-It-Home](/readme-images/Home.png)
 
