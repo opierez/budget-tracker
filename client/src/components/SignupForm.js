@@ -34,8 +34,8 @@ const SignupForm = ({ updateUser, updateErrors }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('form submitted')
-    console.log(errors)
+    // console.log('form submitted')
+    // console.log(errors)
 
     const user = { ...formData };
 
