@@ -58,7 +58,7 @@ When visiting the site, users can:
 
 ## Preview
 ## Login Page
-![Track-It-Signup](/readme-images/Login.png)
+![Track-It-Login](/readme-images/Login.png)
 
 ## Sign Up Page & Error Rendering 
 ![Track-It-Signup](/readme-images/Signup.png)
@@ -77,6 +77,10 @@ When visiting the site, users can:
 
 ## Category Analysis Page
 ![Track-It-Category-Analysis](/readme-images/Category_Analysis.png)
+
+## Profile Page
+![Track-It-Profile](/readme-images/Profile.png)
+
 
 ## Notes/Credits:
 - Some of the Home page styles was taken from  Chris Blakely's tutorial: https://www.youtube.com/watch?v=aeYxBd1it7I 

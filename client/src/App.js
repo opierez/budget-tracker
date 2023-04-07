@@ -69,7 +69,7 @@ function App() {
 
           {/* /users/:id => User Profile Page */}
           <Route path="/users/:id">
-            <ProfilePage user={user} />
+            <ProfilePage user={user} updateUser={updateUser}/>
           </Route>
 
           {/* / => Home Page, Root Route */}
